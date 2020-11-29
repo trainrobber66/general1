@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <body>
-
-<title>#general</title>
-<h1 style="font-family:arial">#general</h1>
-
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // do logic
+  $name = $_POST['fname'];
+}
+?>
 </body>
 </html>
