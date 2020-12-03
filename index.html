@@ -10,9 +10,27 @@
 <input type="file"><br>
 <input type="submit" value="Post" tabindex="6"><br>
 </form>
-POST index.html HTTP/1.1
-Host: trainrobber66.github.io/general1/
-name1=value1&name2=value2
+<script>
+  const createServer = require('http').createServer;
+
+const server = createServer((req, res) => {
+  let body = '';
+  req.on('data', data => body += data)
+
+  req.on('end', () => {
+    res.writeHead(200, {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, GET',
+    });
+    res.end(`{ "response": "${body ? body : 'No body sent' }" }`);
+  })
+});
+
+server.listen(3000, () => {
+  console.log('Server listening');
+} );
+  </script>
 
 </body>
 </html>
